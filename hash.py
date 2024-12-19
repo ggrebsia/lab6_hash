@@ -45,7 +45,7 @@ def hash_message(message, key):
     blocks = text_to_blocks(message)
     hash_value = 0
     for block in blocks:
-        hash_value = encrypt_block(block ^ hash_value, keys)  # XOR with previous hash value
+        hash_value = encrypt_block(hash_value, keys) ^ block  # 1 форммула H(i) = E(H(i-1)) ⊕ M(i)
     return hash_value
 
 def text_to_blocks(text):
